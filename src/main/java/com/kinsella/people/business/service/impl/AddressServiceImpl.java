@@ -9,6 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,6 +40,14 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    public List<Address> getAll() {
+        List<Address> addressList = new ArrayList<>();
+        Iterable<Address> addressIterable = addressRepository.findAll();
+        addressIterable.iterator().forEachRemaining(addressList::add);
+        return addressList;
+    }
+
+    @Override
     public Optional<Address> update(long id, String street, String city, String state, String postalCode) {
         Optional<Address> databaseVersion = get(id);
         return databaseVersion.map(value -> {
@@ -50,9 +61,9 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public boolean delete(long id) {
-        if (get(id).isPresent()) {
-            addressRepository.deleteById(id);
-            return true;
+        Optional<Address> address = get(id);
+        if (address.isPresent()) {
+           return personService.removeAddress(address.get().getPerson(), address.get());
         }
         LOGGER.warn(String.format("Address with id = %d was not found in the database", id));
         return false;

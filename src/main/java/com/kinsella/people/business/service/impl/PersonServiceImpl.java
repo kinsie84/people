@@ -1,6 +1,7 @@
 package com.kinsella.people.business.service.impl;
 
 import com.kinsella.people.business.service.PersonService;
+import com.kinsella.people.data.entity.Address;
 import com.kinsella.people.data.entity.Person;
 import com.kinsella.people.data.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -48,6 +49,21 @@ public class PersonServiceImpl implements PersonService {
             value.setLastName(LastName);
             return value;
         });
+    }
+
+    @Override
+    public boolean removeAddress(Person person, Address address) {
+        if (person.getAddresses().contains(address)) {
+            boolean removed = person.removeAddress(address);
+            if (removed) {
+                personRepository.save(person);
+                return true;
+            }
+            LOGGER.warn(String.format("Address with id = %d was not removed from Person with id = %d", address.getAddressId(), person.getPersonId()));
+        } else {
+            LOGGER.warn(String.format("Address with id = %d was not found to be associated with Person of id = %d", address.getAddressId(), person.getPersonId()));
+        }
+        return false;
     }
 
     @Override

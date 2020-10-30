@@ -69,6 +69,9 @@ public class ConsoleInterface implements CommandLineRunner {
                 case 8:
 					listPeople();
                     break;
+                case 9:
+                    listAddresses();
+                    break;
                 case 0:
                     exit = true;
                     break;
@@ -88,6 +91,7 @@ public class ConsoleInterface implements CommandLineRunner {
         System.out.println("6.Delete Address (id) ");
         System.out.println("7.Count Number of Persons");
         System.out.println("8.List Persons");
+        System.out.println("9.List Addresses");
         System.out.println("0.Exit");
         System.out.println();
     }
@@ -98,7 +102,7 @@ public class ConsoleInterface implements CommandLineRunner {
         while (!valid) {
             System.out.println("Enter option number:");
             option = validateInteger(input);
-            if (option >= 0 && option < 9) {
+            if (option >= 0 && option <= 9) {
                 valid = true;
             } else {
                 System.out.println("Please enter a valid option");
@@ -269,6 +273,12 @@ public class ConsoleInterface implements CommandLineRunner {
     private void listPeople() {
         System.out.println("Selected option: List people");
         System.out.println("List persons: " + personService.getAll());
+        System.out.println();
+    }
+
+    private void listAddresses() {
+        System.out.println("Selected option: List addresses");
+        System.out.println("List addresses: " + addressService.getAll());
         System.out.println();
     }
 

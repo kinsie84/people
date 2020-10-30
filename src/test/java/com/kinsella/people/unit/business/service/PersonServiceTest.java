@@ -44,6 +44,6 @@ public class PersonServiceTest {
     @Test
     public void testGetReturnsPersonById() {
         Optional<Person> testInDatabase = personService.get(1);
-        assertThat(testInDatabase.isPresent());
+        assertThat(testInDatabase.isPresent()).isEqualTo(true);
     }
 }

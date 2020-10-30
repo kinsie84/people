@@ -1,5 +1,6 @@
 package com.kinsella.people.business.service;
 
+import com.kinsella.people.data.entity.Address;
 import com.kinsella.people.data.entity.Person;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public interface PersonService {
     List<Person> getAll();
 
     Optional<Person> update(long id, String firstName, String LastName);
+
+    boolean removeAddress(Person person, Address address);
 
     boolean delete(long id);
 

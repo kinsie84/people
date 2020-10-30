@@ -11,7 +11,7 @@ public class Person {
     @Id
     private long personId;
 
-    @OneToMany(targetEntity = Address.class, mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Address.class, mappedBy = "person", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private final Set<Address> addresses;
 
     @Column(nullable = false)
@@ -57,7 +57,11 @@ public class Person {
     }
 
     public Set<Address> getAddresses() {
-        return addresses;
+        return new HashSet<>(addresses);
+    }
+
+    public boolean removeAddress(Address address) {
+        return this.addresses.remove(address);
     }
 
     @Override
