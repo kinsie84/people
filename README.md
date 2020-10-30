@@ -1,6 +1,8 @@
 # People Application
 Console application which allows a user to perform CRUD operations on persons and their addresses.
 
+<img width="436" alt="Screenshot 2020-10-30 at 14 34 10" src="https://user-images.githubusercontent.com/6882489/97717980-4b55fe00-1abd-11eb-8d3c-56de7ba8e5f0.png">
+
 An embedded in memory database ([h2](https://www.h2database.com/html/main.html)) provides persistence for the lifetime of the application.
 
 ## Prerequisites
