@@ -13,7 +13,15 @@ Download/Clone the project on to your local machine:
 
  * git clone https://github.com/kinsie84/people.git
 
-## Run
+## Spring Boot Run
 Once cloned, navigate to the root directory and run using the following command:
 
  * mvn spring-boot:run
+ 
+## Executable jar
+An executable jar file is available in the "executable" directory
+To run this jar file, navigate to the directory and run the following command
+
+* java -jar people-0.0.1-SNAPSHOT.jar
+
+
