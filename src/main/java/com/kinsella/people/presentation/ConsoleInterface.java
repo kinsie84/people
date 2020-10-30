@@ -78,6 +78,7 @@ public class ConsoleInterface implements CommandLineRunner {
             }
         }
         input.close();
+        System.exit(0);
     }
 
     private void displayMenu() {
