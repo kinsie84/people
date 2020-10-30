@@ -32,7 +32,7 @@ public class ConsoleInterface implements CommandLineRunner {
 
         System.out.println("*********************************************************");
         System.out.println();
-        System.out.println("       You are now existing the People Application       ");
+        System.out.println("       You are now exiting the People Application       ");
         System.out.println();
         System.out.println("*********************************************************");
 
