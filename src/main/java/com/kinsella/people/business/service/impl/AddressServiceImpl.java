@@ -55,7 +55,7 @@ public class AddressServiceImpl implements AddressService {
             value.setCity(city);
             value.setState(state);
             value.setPostalCode(postalCode);
-            return value;
+            return addressRepository.save(value);
         });
     }
 

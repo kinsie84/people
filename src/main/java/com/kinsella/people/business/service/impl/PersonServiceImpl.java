@@ -47,7 +47,7 @@ public class PersonServiceImpl implements PersonService {
         return databaseVersion.map(value -> {
             value.setFirstName(firstName);
             value.setLastName(LastName);
-            return value;
+            return personRepository.save(value);
         });
     }
 
